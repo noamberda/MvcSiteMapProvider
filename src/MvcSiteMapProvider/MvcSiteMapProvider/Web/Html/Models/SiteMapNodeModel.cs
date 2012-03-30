@@ -22,6 +22,12 @@ namespace MvcSiteMapProvider.Web.Html.Models
         }
 
         /// <summary>
+        /// Gets or sets the associated Site map node.
+        /// </summary>
+        /// <value>The Site Map Node.</value>
+        public MvcSiteMapNode SiteMapNode { get; set; }
+
+        /// <summary>
         /// Gets or sets the area.
         /// </summary>
         /// <value>The area.</value>

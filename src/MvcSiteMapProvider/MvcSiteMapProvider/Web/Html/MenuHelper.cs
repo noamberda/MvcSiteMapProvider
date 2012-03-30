@@ -346,7 +346,7 @@ namespace MvcSiteMapProvider.Web.Html
         /// <param name="maxDepth">The max depth.</param>
         /// <param name="drillDownToCurrent">Should the model exceed the maxDepth to reach the current node</param>
         /// <returns>The model.</returns>
-        private static MenuHelperModel BuildModel(MvcSiteMapHtmlHelper helper, SiteMapNode startingNode, bool startingNodeInChildLevel, bool showStartingNode, int maxDepth, bool drillDownToCurrent)
+        public static MenuHelperModel BuildModel(this MvcSiteMapHtmlHelper helper, SiteMapNode startingNode, bool startingNodeInChildLevel, bool showStartingNode, int maxDepth, bool drillDownToCurrent)
         {
             // Build model
             var model = new MenuHelperModel();
@@ -421,7 +421,7 @@ namespace MvcSiteMapProvider.Web.Html
         /// <param name="showStartingNode">Show starting node if set to <c>true</c>.</param>
         /// <param name="maxDepth">The max depth.</param>
         /// <returns>The model.</returns>
-        private static MenuHelperModel BuildModel(MvcSiteMapHtmlHelper helper, SiteMapNode startingNode, bool startingNodeInChildLevel, bool showStartingNode, int maxDepth)
+        public static MenuHelperModel BuildModel(this MvcSiteMapHtmlHelper helper, SiteMapNode startingNode, bool startingNodeInChildLevel, bool showStartingNode, int maxDepth)
         {
             return BuildModel(helper, startingNode, startingNodeInChildLevel, showStartingNode, maxDepth, false);
         }

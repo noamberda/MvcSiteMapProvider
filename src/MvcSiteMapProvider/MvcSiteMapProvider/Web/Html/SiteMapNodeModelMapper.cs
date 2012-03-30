@@ -24,6 +24,7 @@ namespace MvcSiteMapProvider.Web.Html
         {
             var nodeToAdd = new SiteMapNodeModel
             {
+                SiteMapNode = mvcNode,
                 Area = (mvcNode != null ? mvcNode.Area : ""),
                 Controller = (mvcNode != null ? mvcNode.Controller : ""),
                 Action = (mvcNode != null ? mvcNode.Action : ""),

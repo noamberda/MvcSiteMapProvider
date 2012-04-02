@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.Specialized;
+using System.Web;
 
 namespace MvcSiteMapProvider.Web.Html.Models
 {
@@ -21,10 +22,33 @@ namespace MvcSiteMapProvider.Web.Html.Models
             Children = new SiteMapNodeModelList();
         }
 
+
         /// <summary>
-        /// Gets or sets the associated Site map node.
+        /// Check if any of the childs or self has an equal URL
         /// </summary>
-        /// <value>The Site Map Node.</value>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public bool HasChildWithUrl(string url)
+        {
+            if (Url.Equals(url, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            foreach (var child in Children)
+            {
+                if (child.HasChildWithUrl(url))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Site Map Node
+        /// </summary>
         public MvcSiteMapNode SiteMapNode { get; set; }
 
         /// <summary>

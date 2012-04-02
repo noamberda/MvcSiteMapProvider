@@ -125,7 +125,7 @@ namespace MvcSiteMapProvider.Web.Html
         /// <param name="startingNode">The starting node.</param>
         /// <param name="startingNodeInChildLevel">Renders startingNode in child level if set to <c>true</c>.</param>
         /// <returns>The model.</returns>
-        private static SiteMapHelperModel BuildModel(MvcSiteMapHtmlHelper helper, SiteMapNode startingNode, bool startingNodeInChildLevel)
+        public static SiteMapHelperModel BuildModel(this MvcSiteMapHtmlHelper helper, SiteMapNode startingNode, bool startingNodeInChildLevel)
         {
             // Build model
             var model = new SiteMapHelperModel();
@@ -146,7 +146,12 @@ namespace MvcSiteMapProvider.Web.Html
                 {
                     // Add node
                     var nodeToAdd = SiteMapNodeModelMapper.MapToSiteMapNodeModel(node, mvcNode, SourceMetadata);
-                    model.Nodes.Add(nodeToAdd);
+
+                    if (!startingNodeInChildLevel)
+                    {
+                        model.Nodes.Add(nodeToAdd);    
+                    }
+                    
 
                     // Add child nodes
                     if (node.HasChildNodes) {
